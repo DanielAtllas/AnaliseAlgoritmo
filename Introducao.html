@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Introdução - Análise de Algoritmos</title>
+        <meta name="description" content="Este é um site referênte à estudos de análise de algoritmos">
+    </head>
+    
+    <body>
+        <h1> Introdução - Análise de Algoritmos </h1>
+        <p>Esta matéria se fz muito importante na vida de um analista ou cientista de dados, principalemente se este se ecnontra em um ambiente voltado ao desenvolvimento de sistemas e scripts, pois a partir destes conhecimentos, podemos aalisar todo o corpo de um script, como também o seu processo de execução, custo operacional e rendimento. Logo, podemos concluir que com uma boa análise de algoritmo, será possível criar um programa o mais próximo possível do "algoritmo ótimo", que não apresente erros e que se sustente por muito tempo. Portanto, podemos concluir que este processo de análise a lógica e andamento de um algoritmo e suas consequências, é um fator extremamente importante e necessário.</p>
+        <p>Para isso, partiremos do princípio que é: O que é um algoritmo? E em uma definição literal, <strong>algoritmos são conjuntos de regras e procedimentos lógicos perfeitamente definidos que levam à solução de um problema em um número de etapas</strong>, ou seja, são ações lógicas que ressultem na solução de algum problema quando para qualquer entrada, produz uma resposta correta, se forem concedidos tempo e memória suficienttes para a sua execução. Além de possuir características como:</p>
+        <ul>
+            <li>Regras são precisas - Linguagens de programação</li>
+            <li>Conjunto d regras finito</li>
+            <li>Tempo de execução - Execução de forma mais rápida e dinâmica</li>
+            <li>Regras são executadas por um computador - Estruturas de dados</li>
+        </ul>
+        <p>Logo, podemos estimar que para a análise de um algoritmo, devemos provar que tal algoritmo está coreto e sem erros, além de estimar e calcular o tempo que a execução do mesmo consome, de forma a identificar o melhor método/algoritmo. É claro que outras informações e dados também se fazem importantes para esta operação, como o espaço de memória consumido pelo algoritmo e etc.</p>
+        <p>Segue um exemplo para um melhor entendimento deste parâmetro:</p>
+        <pre>
+    <strong>Problema:</strong>    
+        Dado um conjunto de números reais, determine o k-ésimo menor número
+        
+    <strong>Instância do problema:</strong>
+        K = 3
+        
+        Conjunto = 2,4,5,8,10,12
+        
+    <strong>Algoritmos</strong>
+        1 - Ler os N números e coloca-los em um vetor, ordenar o vetor de forma crescente e retornar o elemento de posição K;
+        
+        2 - Ler os K primeiros números e coloca-los em um vetor, ordenar o vetor de forma crescente, ao correr o vetor, insirar 
+            cada elemento em uma variável X e compará-la com o <i>*prox</i>, se for um número menor, aloca-lo na variável X, por 
+            fim retornar o valor da variável X;
+        
+        3 - Percorrer o conjunto e retirar o menor valor, repetir o procedimento K-vezes e ao fim, retornar o elemento retirado
+        
+        </pre>
+        <p>Perceba então que para um mesmo problema, podemos ter 3 diferentes formas de resolução, ou melhor, 3 diferentes algoritmos para a solução do mesmo. Mas a grande questão é <strong>Qual o melhor algoritmo?</strong> Como selecionar um algoritmo em uma situação com N diferentes resoluções?</p>
+        <p>Para isso, devemos olhar primeiramente para o <strong>problema</strong> em questão, pois a partir dele teremos um norte de qual o objetivo a ser alcançado. Em seguida, centraremos a <strong>instância do problema</strong>, que vem a ser a situação ou conjunto em que o problema se encontra. Diante disso, um algoritmo ao receber a descrição do problema e sua instância, desenvolve uma solução para a mesma (ou informa que a instância em questão, não possui solução). Além disso, devemos nos atentar ao <strong>tamanho da instância</strong>, sendo a quantidade de dados necessários paa a descrição da mesma (Para um melhor entendimento, seguindo o exemplo citado acima, imagine que o tamanho da intância se dá a quantidade de elementos que o conjunto possui).</p>
+        <p>Tendo esas questões analisadas, partiremos para a análise do <strong>tempo de execução do algoritmo</strong>, pois cada algoritmo leva um certo período de tempo para a sua execução. Dizemos então que um algoritmo consome <strong>T(i) unidades e tempo para processar a instãncia i</strong>. A relação entre o tempo e o tamanho da intância, dá uma medida da eficiência do algoritmo, ou seja, a conclusão de quão bom  este algortmo se torna para o problema.</p>
+        <p>Além dessas questões iniciais, devemos também medir e definir as <strong>métricas de custo do algoritmo</strong>, tais como a quantidade de vezes que cada parte do algoritmo será executada (principalemnte no uso de loopings) e a quantidade de memória necessária para sua execução.</p>
+        <p>Logo, podemos defnir que para obtermos um "algoritmo ótimo" (e até mesmo um "pior algoritmo"), tais séries devem ser analisadas:</p>
+        <ol>
+            <li>Análise do problema</li>
+            <br><li>Situação da instância em que o poblema se encontra</li>
+            <br><li>Análise do tamanho do problema</li>
+            <br><li>Tempo de execução do algoritmo</li>
+            <br><li>Custo das métricas do algoritmo (quantidade de ações e memória)</li>
+        </ol>
+        <p>Aplicaremos então tais questões em uma situação simples de programação:</p>
+        <pre>
+    <strong>Problema:</strong>    
+        Dado um valor real, determine quanto é 30% deste valor
+        
+    <strong>Instância do problema:</strong>
+        X - 30% = Y
+        
+    <strong>Algoritmos</strong>   
+        1 - <strong>scanf</strong>("%d",&X);
+            aux = (X * 30) / 100;
+            Y = X - aux;
+            
+        2 - <strong>scanf</strong>("%d",&X);
+            aux = X * 0.30;
+            Y = X - aux;
+            
+        3 - <strong>scanf</strong>("%d",&X);
+            Y = X - (X * 0.3);
+        </pre>
+        <p>Perceba então, que ambos os algortimos resultam em um mesmo objetivo de trazer o valor resultante. Porém, se analisarmos de forma mais clínica cada um, perceberemos que:</p>
+        <ol>
+            <li> - Apresenta 6 execuções, onde deve ler o valor, multiplica-lo por 30, dividir o resultado por 100, atribuir o resultado em uma variável, subtrair do valor orginal a percentual obtido e por fim, inserir o resultado final em uma variável.</li>
+            <br><li> - Apresenta 5 execuções, onde deve ler o valor, multiplica-lo por 0.30 e atribuir o resultado em uma variável, subtrair do valor orginal a percentual obtido e por fim, inserir o resultado final em uma variável.</li>
+            <br><li> - Apresenta 4 execuções, onde deve ler o valor, multiplica-lo por 0.3, subtrair o resultado do valor original e inserir o resultante final em uma variável.</li>
+        </ol>
+        <p>Logo, concluimos que o algoritmo 3 possui uma maior eficiência, com menos tempo de execução e menos consumo de memória. Porém, esta é apenas uma análise por cima dos algorimos. A seguir, aprenderemos um dos métodos mais clinicos para a análise de algoritmos de uma maneira mais correta e eficiente, a <strong>análise assintótica</strong>.</p>
+    </body>
+</html>
