@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Assintótica - Análise de Algoritmos</title>
+        <meta name="description" content="Este é um site referênte à estudos de análise de algoritmos">
+    </head>
+    
+    <body>
+        <h1>Análise Assintótica - Análise de algoritmos</h1>
+        <p>Algo recorrente para a análise de algoritmos, é determinar o <strong>tempo de execução</strong> do mesmo, e por isso, é necessário calcular e analisar de aspectos como:</p>
+        <ul>
+            <li>Velocidade de processamento do computador em questão</li>
+            <li>Complexidade das linhas de execução do script</li>
+            <li>Compilador</li>
+            <li>Entre outros...</li>
+        </ul>
+        <p>Logo, podemos deduzir que existe uma linha de elasticidade quanto a este tempo de execução. Pois caso um algoritmo muito lento seja executado por um computador veloz, seu tempo de execução pode variar de mediano ou até melhor que isso.</p>
+        <p>Portanto, a análise assintótica nos ajuda a calcular a <strong>taxa de crescimento do tempo de execução</strong> de um algoritmo, a partir de suas linhas de comando. Podemos deduzir esta taxa a partir de uma função numérica simples: <strong>n^2 + n + x</strong>. Esses valores nos auxiliarão no cálculo e análise de cada comando, onde definiremos que algoritmos que possuem valores de tempo em <strong>potência</strong>, estão dispostos a levar um <strong>período maior de execução</strong>. Como no gráfico abaixo:</p>
+        <img src="https://cdn.kastatic.org/ka-perseus-images/0642ea78ce621e53dbe7f45881a97786c7262635.png">
+        <p>Perceba que após um certo perído, o crescimento da taxa de tempo do <i>n^2</i> é extremamente alta. Logo, algoritmos que apresentem tal valor em suas taxas de tempo de execução, são tidos como algoritmos lentos e geralmente, como os "<strong>piores casos</strong>". Essa comparação só leva em conta a <strong>velocidade do crescimento do custo da execução</strong> do algoritmo. Assim, ela despreza fatores multiplicativos, ou seja, a função <i>2n^2</i>, por exemplo, cresce tão rápido quanto <i>10n^2</i> (Logo numa análise assintótica, podemos dizer que os 2 casos possuem <strong>o mesmo custo de crescimento</strong>).</p>
+        <p>Já em uma situação como, a função <i>n^2</i> cresce mais rápido que <i>100n</i>, embora o primeiro caso seja menor que o segundo. Mas em crescimento de taxa, o primeiro se faz maior com o tempo. Dizemos então, que esta maneira de comparar funções é chamada de <strong>assintótica</strong>.</p>
+        <p>Enfim, é necessário conhecer o <strong>número de instruções</strong> qe tal algoritmo realiza, para determinarmos o seu tempo. Essas instruções podem se classidicadas como:</p>
+        <ul>
+            <li><strong>Simples</strong></li>
+                <p>Instruções que podem ser executadas em linguagem de máquina (com a menor das complexidades possível).</p>
+                <p>Medem apenas <strong>1 unidade de tempo</strong>. Como por exemplo:</p>
+                <ul>
+                    <li>Atribuições de valores</li>
+                    <pre>
+        <i>a = 21</i>
+        <i>b = a + 11</i>
+        <i>x = x * x + (a - b)</i>
+                    </pre>
+                    <br><li>Incremento de valores</li>
+                    <pre>
+        <i>i++</i>
+                    </pre>
+                    <br><li>Operações aritméticas</li>
+                    <pre>
+        <i>system(cls)</i>
+                    </pre>
+                    <br><li>Acesso de elementos</li>
+                    <pre>
+        <i>a = vetor[5]</i>
+                    </pre>
+                    <br><li>Expressões lógicas</li>
+                    <pre>
+        <i>a > b</i>
+        <i>!a</i>
+        <i>(a == b) || (c != 5) && (i > 20)</i>
+                    </pre>
+                    <br><li>Execuçoes de escrita/leitura</li>
+                    <pre>
+        <i>printf()</i>
+        <i>scanf()</i>
+                    </pre>
+                </ul>
+            <li><strong>Complexas</strong></li>
+                <p>São combinações de instruções simples, construídas através de instruções de controle (como loopings)</p>
+                <p>Medem <strong>N unidades de tempo</strong></p>
+        </ul>
+        <p>Portanto, imagine que no caso das instruções simples, sabemos exatamente o quantas vezes ela irá executar e por esse motivo, indicamos o valor de 1. Porém, no caso das complexas, a quantidade de execuções é relativa (por exemplo um <i>for()</i> em que a instrução é rodada N vezes), e por não sabermos quantas vezes tal instrução irá rodas, atribuíos um valor N. Para um melhor entendimento, percea a análise no algoritmo abaixo:</p>
+        <pre>
+   1    | scanf(“%d”, &n); 
+   n+1  | for (i=0; i &lt;n; i++) { 
+   n    |     scanf(“%d”, &a); 
+   n    |     s += a; 
+   0    | } 
+   1    | b = s / n; 
+   
+   
+   Logo, nas instruções simples, tempos atribuição de 1 unidade de tempo
+   
+   No caso do <i>for()</i>, sendo uma instrução complexa, temos N+1 unidades de tempo (o +1 devido ao fato de que 1 rodada do loop será descartada)
+   
+   Além disso, para as instruções dentro do loop, serão executadas N vezes (devido a ordem do loop), mesmo que sejam instruções simples
+   
+   Temos então: 1 + (n+1) + n + n + 1 = <strong>3 + 3n</strong>
+   
+   Ou seja, tempo total de execução deste algoritmo é de 3+3n
+        </pre>
+        <p>Perceba então que é algo até simples de ser definido, porém que requer uma atenção para determinarmos o tempo de execução do algoritmo, qe nada ais é que a <strong>soma do tempo de execução de todas as linhas do algoritmo</strong>.</p>
+        <p>Devmos então nos atentar a instruções simples e complexas. A partir disto, podemos definir os <strong>piores/melhores casos</strong>, ou seja, casos em que o algoritmo é tipo como mais veloz ou mais lento em determinada situação. Para isso, atribuimos uma hipótese de valor para algumas das execuções e ao obtermos o tempo total de ambas, iremos compara-los e determinarmos o melhor/pior. Como a seguir:</p>
+        <pre>
+   1    | scanf(“%d”, &n); 
+   n+1  | for (i=0; i &lt;n; i++) { 
+   n    |     scanf(“%d”, &a); 
+   n    |     s += a; 
+   0    | } 
+   1    | b = s / n; 
+   
+   
+   Imaginemos a <strong>melhor das situações</strong> neste algoritmo, onde o determinante da instrução <i>for()</i> seja executado apenas uma vez,
+   ou seja, imagine que este <i>for()</i> irá executar apenas 1 única vez (n = 1). Temos então:
+   
+   1 + 1+1 + 1 + 1 + 1 = <strong>6</strong>
+   
+   Imaginemos a <strong>pior das situações</strong> neste algoritmo, onde o determinante da instrução <i>for()</i> seja executado N vezes,
+   ou seja, imagine que este <i>for()</i> irá executar Nx. Temos então:
+   
+   1 + n+1 + n + n + 1 = <strong>3 + 3n</strong>
+   
+        </pre>
+        <ul>
+            <li><strong>Caso médio</strong></li>
+                <p>Além da análise dos melhores e piores casos de um algoritmo, é também estudado o <strong>caso médio</strong>, onde é deduizido hipoteticamente que tal situação do algoritmo aconteça e apartir disso, analisamos como o algoritmo se comprtaria nesta medida de tempo. Imagine por exemplo um algoritmo em que é executado um loop <i>while</i> com dindição de parada <i>X</i>, onde este loop só irá parar quando o valor de <i>X</i> for encontrado no vetor <i>vet[n]</i>. Teremos então os seguintes casos:</p>
+                <ul>
+                    <li><strong>Melhor caso</strong> - Neste caso, o valor de <i>X</i> seria encontrado na primeira posição do vetor, forçando a execução do loop apenas 1 única vez.</li>
+                    <br>
+                    <li><strong>Pior caso</strong> - Neste caso, o valor de <i>X</i> seria encontrado na última posição do vetor (ou até mesmo nem seja encontrado no vetor), forçando a execução do loop N vezes.</li>
+                    <br>
+                    <li><strong>Caso médio</strong> - Neste caso, o valor de <i>X</i> pode estar ou não presente no vetor. Portato iniciamos acreditando que o valor de <i>X</i> esteja presente no vetor e assim cálculamos o caso médio.</li>
+                </ul>
+                <p>Perceba então que uma suposição é feita, partimos então do princípio "Supondo que o valor esteja presente no ..." e realizamos a análise do caso médio (afinal, se o valor não estiver presente, estariamos analisando o pior caso certo?). Tendo esta parte compreendida, para realizarmos o cálculo do caso médio, devemos utilizar da fórmula de <strong>somatório de elemento</strong>, o conhecido: <strong>&sum;</strong></p>
+                <pre>
+            n
+            &sum; i = ?
+            i = x
+            
+        Ou seja, dado um valor de incremento "<strong>i</strong>" devemos soma-lo partindo de um valor inicial "<strong>x</strong>" até que o valor "<strong>n</strong>" seja alcançado.
+            
+        Por eexemplo:
+            
+            5
+            &sum; i = 1 + 2 + 3 + 4 + 5 = 15
+            i = 1
+            
+        Podemos simplificar tal fórmula de tal formato:
+        
+            n
+            &sum; i = (n(n+1))/2
+            i = x
+            
+        Por exemplo:    
+            
+            5
+            &sum; i = (5(5+1))/2 = 15
+            i = 1
+                </pre>
+                <p>Utilizamos desta fórmula para calcular o caso médio dos algoritmos, partindo do princípio que a probabilidade de o valor ser encontrado é = <strong>P(i) = 1/n</strong> (No exemplo do vetor, significa que a probabilidade de o valor de <i>X</i> ser encontrado no vetor é de 1/N) e o tempo de execução é de <strong>T(i) = i</strong> (No exemplo do vetor, o tempo de execução é até encontrar o valor de <i>X</i> no vetor, portanto, seu tempo é igual ao seu valor). Ao juntarmos estes conceitos, temos então a seguinte fórmula:</p>
+                <pre>
+            n
+            &sum; P(i) . T(i) = ?
+            i = x
+            
+            n
+            &sum; (1/N) . i = ?
+            i = x
+            
+            <strong>1/n . (n(n+1))/2</strong>
+                </pre>
+        </ul>
+    </body>
+</html>
