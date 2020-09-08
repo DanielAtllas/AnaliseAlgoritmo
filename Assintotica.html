@@ -82,8 +82,11 @@
    Ou seja, tempo total de execução deste algoritmo é de 3+3n
         </pre>
         <p>Perceba então que é algo até simples de ser definido, porém que requer uma atenção para determinarmos o tempo de execução do algoritmo, qe nada ais é que a <strong>soma do tempo de execução de todas as linhas do algoritmo</strong>.</p>
-        <p>Devmos então nos atentar a instruções simples e complexas. A partir disto, podemos definir os <strong>piores/melhores casos</strong>, ou seja, casos em que o algoritmo é tipo como mais veloz ou mais lento em determinada situação. Para isso, atribuimos uma hipótese de valor para algumas das execuções e ao obtermos o tempo total de ambas, iremos compara-los e determinarmos o melhor/pior. Como a seguir:</p>
-        <pre>
+        <ul>
+            <li><strong>Melhor e pior caso</strong></li>
+        
+                <p>Devemos então nos atentar a instruções simples e complexas. A partir disto, podemos definir os <strong>piores/melhores casos</strong>, ou seja, casos em que o algoritmo é tipo como mais veloz ou mais lento em determinada situação. Para isso, atribuimos uma hipótese de valor para algumas das execuções e ao obtermos o tempo total de ambas, iremos compara-los e determinarmos o melhor/pior. Como a seguir:</p>
+                <pre>
    1    | scanf(“%d”, &n); 
    n+1  | for (i=0; i &lt;n; i++) { 
    n    |     scanf(“%d”, &a); 
@@ -102,8 +105,8 @@
    
    1 + n+1 + n + n + 1 = <strong>3 + 3n</strong>
    
-        </pre>
-        <ul>
+                </pre>
+        
             <li><strong>Caso médio</strong></li>
                 <p>Além da análise dos melhores e piores casos de um algoritmo, é também estudado o <strong>caso médio</strong>, onde é deduizido hipoteticamente que tal situação do algoritmo aconteça e apartir disso, analisamos como o algoritmo se comprtaria nesta medida de tempo. Imagine por exemplo um algoritmo em que é executado um loop <i>while</i> com dindição de parada <i>X</i>, onde este loop só irá parar quando o valor de <i>X</i> for encontrado no vetor <i>vet[n]</i>. Teremos então os seguintes casos:</p>
                 <ul>
@@ -150,6 +153,57 @@
             i = x
             
             <strong>1/n . (n(n+1))/2</strong>
+                </pre>
+                <p>Que também pode ser simplificada para :</p>
+                <pre>
+            Caso médio = <strong>(<i>Pior caso</i> + <i>Melhor caso</i>)/2</strong>
+                </pre>
+            
+            <li><strong>Recomendação de análise</strong></li>
+                <p>Podemos concluir então que o processo de análise de um algoritmo é demasiadamente tranquilo, porém requer uma boa atenção do analista (afinal, pelo fato de analisarmos comando a comando e execução, devemos estar atentos a não errar e atrapalhar oresultado final). Diante disso, segue uma dica de como realizar uma boa análise de forma mais clínica. Para isso, interpretaremos o algoritmo através de <strong>passos principais</strong>, de forma a separar as cplexidades de execução e facilitar a análise. Por exemplo></p>
+                <pre>
+            int maior = mat[0][0];
+            for (i=0; i&lt;n i++)
+                for (j=0; j&lt;n; j++)
+                    if (mat[i][j] > maior)
+                        maior = mat[i][j];
+            return maior;
+            
+            
+            
+A partir deste algoritmo, façamos a primeira análise (focando apenas no primeiro <i>for</i>):
+        
+            int maior = mat[0][0];              | 1
+            for (i=0; i&lt;n i++)                  | n+1
+                for (j=0; j&lt;n; j++)             | n
+                    if (mat[i][j] > maior)      | n
+                        maior = mat[i][j];      | ?
+            return maior;                       | 1
+            
+            
+            
+Partiremos para a segunda análise (focando já no segundo <i>for</i>):
+        
+            int maior = mat[0][0];              | 1     |
+            for (i=0; i&lt;n i++)                  | n+1   |
+                for (j=0; j&lt;n; j++)             | n     | n+1
+                    if (mat[i][j] > maior)      | n     | n
+                        maior = mat[i][j];      | ?     | ?
+            return maior;                       | 1     |
+            
+            
+            
+Agora, basta <strong>multiplicar</strong> os passos e assim obter o resultado final:
+        
+            int maior = mat[0][0];              | 1     |       | 1
+            for (i=0; i&lt;n i++)                  | n+1   |       | n+1
+                for (j=0; j&lt;n; j++)             | n     | n+1   | n^2 + n
+                    if (mat[i][j] > maior)      | n     | n     | n^2 
+                        maior = mat[i][j];      | ?     | ?     | ?
+            return maior;                       | 1     |       | 1
+            
+            = <strong>2n^2 + 2n + 2</strong>
+            
                 </pre>
         </ul>
     </body>
