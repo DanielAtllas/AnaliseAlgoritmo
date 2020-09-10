@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Complexidade - Análise de Algoritmos</title>
+        <meta name="description" content="Este é um site referênte à estudos de análise de algoritmos">
+    </head>
+    
+    <body>
+        <h1>Ordem de complexidade - Análise de algoritmos</h1>
+        <p>Como já foi dito, análise de algoritmos tem como objetivo verificar e estudar um algoritmo, de forma a encontrar situações em que ele agirá da pior ou pior forma (alé do caso médio) e assim definirmos a complexidade do mesmo, podendo indicar o grau de qualidade do mesmo. Porém, essa análise pode ser expandida no quesito de <strong>comparação</strong> com outros algoritmos, afinal, é muito comum no mundo da programação, existirem N diferentes códigos e algoritmos que a pesar da sua diferença de script, realizam um mesmo objetivo. Diante disso, a ordem de complexidade tem como objetivo <strong>comparar dois ou mais algoritmos, de forma a identificar os casos em que um domina o outro (em que o algoritmo é melhor que outro)</strong>.</p>
+        <p>Essa questão se aplica e se firma bastante sobre o quesito de <strong>tempo de execução</strong> que o algoitmo levaá para sua execução, a partir de uma variável de entrada N. Já estudamos também que ao bater o olho em um algoritmo, podemos definir logo de cara que aqueles que apresentem uma análise assintóica com variáveis superiores, são mais exigentes que os demais, como por exemplo: <i>N^2 > N</i> ou <i>N^n > N^n</i>. Diante disso, podemos julgar um algoritmo mais "pesado" e trabalhoso do que outro a partir de suan apresentação de variaveis. Como no exemplo:</p>
+        <pre>
+    Tendo 2 algoritmos <i>A</i> e <i>B</i> para a solução de um problema. Se a complexidade de um é expressa por <i>Fa(n) = n^2</i> e <i>Fb(n) = 100n</i>, qual o mais custoso?
+        </pre>
+        <p>Aqui podemos peceber que independente do valor de <i>n</i>, a primeira função terá um desempenho muito mais custoso em algum momento de seu intervalo, de forma escalar em um gráfico. Aconselhando a isso, é indicado o site <a href="https://www.wolframalpha.com/input/?i=plot+x+%2C+x%5E2">https://www.wolframalpha.com/input/?i=plot+x+%2C+x%5E2</a>, onde é possível colocar várias funções e observar o seu comportamento, nesse site, as funções são postas em um gráfico e podemos observer em que instante de variável uma irá se opor a outra. Para isso, devemos inserir dados como: </p>
+        <pre>
+    plot <i>função 1</i>, <i>função 2</i>, x=0 to <i>valor máximo de alcance</i>
+        </pre>
+        <p>Assim podemos ter uma visão bem melhor e real do comportamento e sobreposição de 2 ou mais funções. Essa quesão de dominação de uma função sobre outra, é chamada de <strong>dominação assintótica</strong> e é um argumento muito usado nas análises de algoritmos e comparações de algoritmos. Logo, no caso do exemplo citado acima, podemos dizer que a primeira função domina a segunda, devido ao seu maior custo de execução. Para que isso esteja fixo em seus estudos, seguiremos com outro exemplo de dominação entre2 funções:</p>
+        <pre>
+    Dadas as funções:
+    
+        𝑓(𝑛) = 5 ∗ 𝑛^2 + 10
+        
+        g(𝑛) = 0.5 ∗ 𝑛^3 − 20
+        
+    Qual função domina a outra?    
+        
+        </pre>
+        <p>Aqui, logo de cara, podemos indicar que em algum momento de variável, a função <i>g(n)</i> possui dominação, devido a sua característica de custo <i>n^3</i>, ou seja, em dado instante, colocado em um gráfico, a primeira função terá um custo exponencialmente maior do que a outra.</p>
+        <p>Diante destas questões, entraremos nas <storng>notações de ordem de complexidade</storng>, as quais são 3 diferentes fórmulas que indicam a dominâcia de uma função por outra, ou seja, estas notações irão definir que indepente de qual seja a variável de tempo de execução trabalhada, uma função, em algum momento, terá uma poporção bem maior que a outra. Estas notações são:</p>
+        <ul>
+            <li><strong>Ômicron</strong></li>
+                <p>Ou também chamado de <strong>Big-O</strong>, onde define um limite <strong>superior</strong> para a função, por um fator constane, ou seja, indica de forma direta que uma função será sempre dominada por outra função.</p>
+                <p>Sua fórmula de complexidade é: <i>𝑓(𝑛) = Ο(𝑔(𝑛))</i>, representada como a função <i>F(n)</i> pertence ao conjunto em que a função <i>G(n)</i> domina, ou seja, <i>G(n)</i> domina <i>F(n)</i> em algum momento de instante de execução.</p>
+                <pre>
+            𝑔(𝑛) = 𝑛^2 + 1   ->  Ο(𝑓(𝑛) = 𝑛^2)
+            
+            𝑔(𝑛) = 𝑛^2 + 1  ->  Ο(𝑛^2)
+            
+            𝑔(𝑛) = 𝑛^3 + 5𝑛^2 − 3   ->  Ο(𝑛^3)
+            
+            𝑔(𝑛) = 517 ->  Ο(1)
+
+                </pre>
+                <p>É bom ressaltar que 𝑔(𝑛) = n^2 será sempre O(n^3), de O(n^4) e assim por diante, devido a grandeza exponencial.</p>
+            
+            <li><strong>Ômega</strong></li>
+                <p>A notação ômega define um limite <strong>inferior</strong> para a função, por um fato contante, ou seja, indica de forma direta que uma função será sempre domimada por outra função (o exato contrário do ômicron).</p>
+                <p>Sua fórmula de complexidade é: <i>𝑓(𝑛) = &Omega;(𝑔(𝑛))</i>, representada como a função <i>F(n)</i> pertence ao conjunto dominante da função <i>G(n)</i> , ou seja, <i>F(n)</i> domina <i>G(n)</i> em algum momento de instante de execução.</p>
+                <pre>
+            𝑔(𝑛) = 𝑛^2  ->  &Omega;(𝑓(𝑛) = 𝑛^2 + 1)
+            
+            𝑔(𝑛) = 𝑛^2  ->  &Omega;(𝑛^2 + 1)
+            
+            𝑔(𝑛) = 𝑛^3   ->  &Omega;(𝑛^3 + 5𝑛^2 − 3)
+            
+            𝑔(𝑛) = 1 ->  &Omega;(517)
+
+                </pre>
+                <p>É bom ressaltar que se 𝑔(𝑛) = 𝑛^2 é &Omega;(𝑓(𝑛) = 𝑛), logo 𝑓(𝑛) = 𝑛 é O(𝑔(𝑛) = 𝑛^2)</p>
+            
+            <li><strong>Teta</strong></li>
+                <p>A notação teta <strong>limita</strong> a função por fatores constantes, ou seja, indica que uma função pode dominar a outra. Porém, em dado momento, ocorrerá uma inversão e ela será dominada.</p>
+                <p>Sua fórmula de complexidade é: <i>𝑓(𝑛) = &Theta;(𝑔(𝑛))</i>, representada como a função <i>F(n)</i> domina <i>G(n)</i> , Porém, <i>G(n)</i> dominará <i>F(n)</i> em algum momento de instante de execução.</p>
+        </ul>
+    </body>
+</html>
